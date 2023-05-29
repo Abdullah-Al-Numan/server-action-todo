@@ -1,6 +1,5 @@
 import connectMongo from "../utills/dbConnection";
 import Todo from "../models/todoModel";
-import GetTodo from "./GetTodo";
 
 const TodoInput = () => {
   async function create(formData: FormData) {
@@ -31,7 +30,6 @@ const TodoInput = () => {
       >
         Add Todo
       </button>
-      <GetTodo />
     </form>
   );
 };
