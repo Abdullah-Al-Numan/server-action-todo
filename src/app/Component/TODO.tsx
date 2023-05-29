@@ -1,7 +1,19 @@
+import connectMongo from "../utills/dbConnection";
+import Todo from "../models/todoModel";
+
 const TodoInput = () => {
   async function create(formData: FormData) {
     "use server";
-    console.log(formData.get("todo"));
+    try {
+      await connectMongo();
+      const newTodo = new Todo({
+        todo: formData.get("todo"),
+      });
+      await newTodo.save();
+      console.log("server connection is stablished");
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
